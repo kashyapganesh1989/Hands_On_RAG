@@ -1,0 +1,28 @@
+
+Ticket #4471
+Customer John Smith called about his account.
+SSN on file: 123-45-6789
+Contact: john.smith@example.com, (312) 555-0147
+Integration credential: sk-demo_abcdefghijklmnop123456
+Resolution: password reset completed.
+
+Ticket #4472
+Customer Priya Nair emailed asking to update her mailing address on file.
+SSN on file: 987-65-4320
+Contact: priya.nair@example.com, (415) 555-0192
+Resolution: address updated in the HR system; confirmation email sent.
+
+Ticket #4473
+Customer Miguel Alvarez reported that our nightly export job stopped
+uploading to S3. He shared temporary credentials so we could reproduce
+the issue on our side.
+AWS access key: AKIAIOSFODNN7EXAMPLE
+Contact: miguel.alvarez@example.com, (206) 555-0133
+Resolution: bucket policy was missing a permission; export job restored
+and confirmed running after redeploy.
+
+Ticket #4474
+Customer Dana Whitfield asked why a weekly report email never arrived.
+Contact: dana.whitfield@example.com, (503) 555-0176
+Resolution: found a typo in the distribution list; corrected and resent
+the missing report.

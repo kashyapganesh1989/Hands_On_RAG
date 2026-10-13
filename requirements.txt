@@ -1,0 +1,30 @@
+# RAG Training Kit — dependencies
+# Install with: pip install -r requirements.txt
+
+# --- Core RAG stack (LangChain + Chroma) ---
+langchain>=0.2
+langchain-core>=0.2
+langchain-openai>=0.1
+langchain-community>=0.2
+langchain-chroma>=0.1
+langchain-text-splitters>=0.2
+chromadb>=0.5
+
+# --- OpenAI client (used directly by langchain-openai) ---
+openai>=1.30
+
+# --- Document loading (PDF support for the ingestion step) ---
+pypdf>=4.0
+
+# --- Config / secrets / guardrail rules ---
+python-dotenv>=1.0
+pyyaml>=6.0
+
+# --- Notebooks ---
+jupyter>=1.0
+notebook>=7.0
+ipykernel>=6.29
+
+# --- Charts and math used in the decorative/illustration cells ---
+matplotlib>=3.8
+numpy>=1.26

@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rag-training-kit"
+version = "1.0.0"
+description = "Standalone, shareable RAG training kit — a real, working RAG pipeline (ingestion, chunking, embeddings, vector store, retrieval, generation, guardrails) taught through live Jupyter notebooks."
+authors = [{ name = "Ganesh Kashyap" }]
+requires-python = ">=3.10"
+dependencies = [
+    "langchain",
+    "langchain-core",
+    "langchain-openai",
+    "langchain-community",
+    "langchain-chroma",
+    "langchain-text-splitters",
+    "chromadb",
+    "openai",
+    "pypdf",
+    "python-dotenv",
+    "pyyaml",
+]
+
+[project.optional-dependencies]
+notebooks = ["jupyter", "notebook", "ipykernel", "matplotlib", "numpy"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

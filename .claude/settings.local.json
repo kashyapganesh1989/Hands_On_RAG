@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c ' *)",
+      "Bash(python3 \"C:/Users/gkkno/AppData/Local/Temp/claude/d--AI-projects-RAG-Training-Kit/f508d2ff-70cb-4587-9915-004caa4d985d/scratchpad/edit_notebook.py\")",
+      "Bash(mv docs/__pycache__/rag_helpers.cpython-314.pyc \"C:/Users/gkkno/AppData/Local/Temp/claude/d--AI-projects-RAG-Training-Kit/f508d2ff-70cb-4587-9915-004caa4d985d/scratchpad/\")",
+      "Bash(jupyter nbconvert *)",
+      "Bash(python3 -m nbconvert --to notebook --execute 1_Hands_On_RAG_Walkthrough.ipynb --output-dir \"C:/Users/gkkno/AppData/Local/Temp/claude/d--AI-projects-RAG-Training-Kit/f508d2ff-70cb-4587-9915-004caa4d985d/scratchpad\" --output executed.ipynb --ExecutePreprocessor.timeout=300)",
+      "Bash(python3 -)",
+      "Bash(python3 harness.py rank advanced agentic graph)"
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+# Guardrail rules for the RAG Training Kit's "Five Gates" safety engine.
+# Edit patterns here to tune what the engine blocks or redacts — no code
+# changes needed. All patterns are matched case-insensitively.
+
+# Gate 1 — Content filter: blocks prompt-injection / jailbreak attempts
+# before a question is ever retrieved or sent to the model.
+content_filter:
+  patterns:
+    - 'ignore\s+(all\s+)?(previous|prior|above)\s+(instructions|rules|prompts)'
+    - 'you\s+are\s+now\s+(?:in\s+)?(dan|developer\s+mode|jailbreak)'
+    - 'do\s+anything\s+now'
+
+# Gate 3 — Policy check: this assistant is read-only. Blocks any request
+# that asks it to take an action rather than answer a question.
+policy:
+  forbidden_patterns:
+    - '\b(delete|drop|truncate|remove)\b.*\b(table|database|record|row|file)s?\b'
+    - '\b(send|forward|email)\b.*\b(email|message|mail)\b'
+    - '\b(transfer|pay|refund|wire)\b.*\b(money|funds|payment|\$)'
+    - '\b(update|modify|change)\b.*\b(account|password|salary|record)s?\b'
+    - '\bexecute\b.*\b(sql|command|script)\b'
+
+# Gate 2 — PII redactor: strips private data from retrieved chunks before
+# the model sees them, and from the model's answer before anyone sees it.
+# Checked in this order; each match is replaced with its [REDACTED-...] tag.
+pii:
+  patterns:
+    - label: SSN
+      pattern: '\b\d{3}-\d{2}-\d{4}\b'
+    - label: EMAIL
+      pattern: '[\w.+-]+@[\w-]+\.[\w.-]+'
+    - label: PHONE
+      pattern: '(?:\(\d{3}\)\s*|\b\d{3}[-.\s])\d{3}[-.\s]?\d{4}\b'
+    - label: API-KEY
+      pattern: '\bsk-[A-Za-z0-9_-]+'
+    - label: AWS-KEY
+      pattern: '\bAKIA[0-9A-Z]{16}\b'
+
+# Gate 4 — Rate limiter: a per-session cap on both call count and estimated
+# token usage, so a bug or an abusive session can't run up a huge bill.
+rate_limit:
+  max_calls_per_session: 10
+  max_tokens_per_session: 100000
